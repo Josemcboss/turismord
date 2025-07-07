@@ -29,6 +29,17 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏝️</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏝️</text></svg>">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Explora RD">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="scripts/innovative-features.js" as="script">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +52,73 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/innovative-features.css">
     <style>
-        /* Temporary inline styles for initial setup */
+        /* Enhanced destination cards */
+        .destination-card-enhanced {
+            perspective: 1000px;
+            height: 400px;
+        }
+        
+        .destination-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .destination-card-enhanced:hover .destination-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .destination-card-front, .destination-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .destination-card-back {
+            background: linear-gradient(135deg, #007bff, #28a745);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .destination-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body data-bs-theme="light">
@@ -159,47 +235,141 @@
             </div>
         </section>
 
-        <!-- Sección Destinos -->
+        <!-- Sección Destinos con Efectos 3D -->
         <section id="destinos" class="py-5">
             <div class="container">
-                <h2 class="section-title">Destinos Populares</h2>
+                <h2 class="section-title gradient-text">Destinos Populares</h2>
+                <p class="text-center mb-5">Descubre lugares mágicos con experiencias únicas e innovadoras</p>
                 <div class="row">
-                    <!-- Destino 1 -->
+                    <!-- Destino 1 - Punta Cana Enhanced -->
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm hover-effect">
-                            <img src="https://www.palladiumhotelgroup.com/es/guia-turistica/republica-dominicana/santo-domingo/playas/_jcr_content/root/responsivegrid/container_copy/container/image_487618484_copy_1764701411.coreimg.jpeg/1730893352504/palladium-hotel-group-santo-domingo-playa-palenque.jpeg" class="card-img-top" alt="Punta Cana">
-                            <div class="card-body">
-                                <h5 class="card-title">Punta Cana</h5>
-                                <p class="card-text">Playas de arena blanca, aguas cristalinas y resorts de lujo te esperan en el paraíso del Caribe.</p>
-                                <a href="#" class="btn btn-primary" onclick="showAlert('Punta Cana')">Ver más</a>
+                        <div class="destination-card-enhanced">
+                            <div class="destination-card-inner">
+                                <div class="destination-card-front">
+                                    <div class="card shadow-sm hover-effect card-3d h-100">
+                                        <img src="https://www.palladiumhotelgroup.com/es/guia-turistica/republica-dominicana/santo-domingo/playas/_jcr_content/root/responsivegrid/container_copy/container/image_487618484_copy_1764701411.coreimg.jpeg/1730893352504/palladium-hotel-group-santo-domingo-playa-palenque.jpeg" class="card-img-top" alt="Punta Cana">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Punta Cana</h5>
+                                            <p class="card-text">Playas de arena blanca, aguas cristalinas y resorts de lujo te esperan en el paraíso del Caribe.</p>
+                                            <a href="#" class="btn btn-primary" onclick="showAlert('Punta Cana')">Ver más</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="destination-card-back">
+                                    <h4><i class="bi bi-geo-alt-fill me-2"></i>Punta Cana</h4>
+                                    <div class="destination-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-number">32km</span>
+                                            <span class="stat-label">de playas</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">30°C</span>
+                                            <span class="stat-label">temperatura</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">50+</span>
+                                            <span class="stat-label">resorts</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">4.8★</span>
+                                            <span class="stat-label">valoración</span>
+                                        </div>
+                                    </div>
+                                    <p>Descubre deportes acuáticos, golf mundial y vida nocturna vibrante</p>
+                                    <button class="btn btn-light btn-sm" onclick="tourismInnovations.earnBadge('explorer')">
+                                        Explorar Destino
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Destino 2 -->
+                    <!-- Destino 2 - Samaná Enhanced -->
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm hover-effect">
-                            <img src="https://samanainn.com/uploads/0000/157/2024/07/29/pixelcut-export-1.jpeg" class="card-img-top" alt="Samaná">
-                            <div class="card-body">
-                                <h5 class="card-title">Samaná</h5>
-                                <p class="card-text">Naturaleza virgen, cascadas espectaculares y el avistamiento de ballenas jorobadas.</p>
-                                <a href="#" class="btn btn-primary" onclick="showAlert('Samaná')">Ver más</a>
+                        <div class="destination-card-enhanced">
+                            <div class="destination-card-inner">
+                                <div class="destination-card-front">
+                                    <div class="card shadow-sm hover-effect card-3d h-100">
+                                        <img src="https://samanainn.com/uploads/0000/157/2024/07/29/pixelcut-export-1.jpeg" class="card-img-top" alt="Samaná">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Samaná</h5>
+                                            <p class="card-text">Naturaleza virgen, cascadas espectaculares y el avistamiento de ballenas jorobadas.</p>
+                                            <a href="#" class="btn btn-primary" onclick="showAlert('Samaná')">Ver más</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="destination-card-back">
+                                    <h4><i class="bi bi-geo-alt-fill me-2"></i>Samaná</h4>
+                                    <div class="destination-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-number">3,000+</span>
+                                            <span class="stat-label">ballenas</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">52m</span>
+                                            <span class="stat-label">Salto El Limón</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">26°C</span>
+                                            <span class="stat-label">temperatura</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">100%</span>
+                                            <span class="stat-label">naturaleza</span>
+                                        </div>
+                                    </div>
+                                    <p>Temporada de ballenas: Enero - Marzo</p>
+                                    <button class="btn btn-light btn-sm" onclick="tourismInnovations.earnBadge('explorer')">
+                                        Explorar Destino
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Destino 3 -->
+                    <!-- Destino 3 - Santo Domingo Enhanced -->
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm hover-effect">
-                            <img src="https://i0.wp.com/bavarodigital.net/wp-content/uploads/2024/05/santo-domingo-ciudades-creativas-jpg.webp?resize=860%2C645&ssl=1" class="card-img-top" alt="Santo Domingo">
-                            <div class="card-body">
-                                <h5 class="card-title">Santo Domingo</h5>
-                                <p class="card-text">Sumérgete en la historia de la primera ciudad de América, con su encanto colonial y vibrante vida nocturna.</p>
-                                <a href="#" class="btn btn-primary" onclick="showAlert('Santo Domingo')">Ver más</a>
+                        <div class="destination-card-enhanced">
+                            <div class="destination-card-inner">
+                                <div class="destination-card-front">
+                                    <div class="card shadow-sm hover-effect card-3d h-100">
+                                        <img src="https://i0.wp.com/bavarodigital.net/wp-content/uploads/2024/05/santo-domingo-ciudades-creativas-jpg.webp?resize=860%2C645&ssl=1" class="card-img-top" alt="Santo Domingo">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Santo Domingo</h5>
+                                            <p class="card-text">Sumérgete en la historia de la primera ciudad de América, con su encanto colonial y vibrante vida nocturna.</p>
+                                            <a href="#" class="btn btn-primary" onclick="showAlert('Santo Domingo')">Ver más</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="destination-card-back">
+                                    <h4><i class="bi bi-geo-alt-fill me-2"></i>Santo Domingo</h4>
+                                    <div class="destination-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-number">530</span>
+                                            <span class="stat-label">años historia</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">UNESCO</span>
+                                            <span class="stat-label">patrimonio</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">28°C</span>
+                                            <span class="stat-label">temperatura</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">3M+</span>
+                                            <span class="stat-label">habitantes</span>
+                                        </div>
+                                    </div>
+                                    <p>Primera catedral y universidad de América</p>
+                                    <button class="btn btn-light btn-sm" onclick="tourismInnovations.earnBadge('explorer')">
+                                        Explorar Destino
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="destinos.html" class="btn btn-outline-primary btn-lg">Ver Todos los Destinos</a>
+                    <a href="destinos.html" class="btn btn-innovative">Ver Todos los Destinos</a>
                 </div>
             </div>
         </section>
@@ -232,7 +402,157 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <a href="servicios.html" class="btn btn-outline-primary btn-lg">Ver Todos los Servicios</a>
+                    <a href="servicios.html" class="btn btn-innovative">Ver Todos los Servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Dominican Republic Timeline -->
+        <section class="py-5 bg-light" id="rd-timeline">
+            <div class="container">
+                <h2 class="section-title gradient-text">Historia Interactiva de República Dominicana</h2>
+                <p class="text-center mb-5">Descubre los momentos más importantes de nuestra rica historia</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-ship" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">1492</h5>
+                                    <small class="text-muted">Descubrimiento</small>
+                                </div>
+                            </div>
+                            <p>Cristóbal Colón llega a la isla La Española, convirtiéndose en el primer territorio americano visitado por los europeos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-success text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-building-fill" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">1496</h5>
+                                    <small class="text-muted">Primera Ciudad</small>
+                                </div>
+                            </div>
+                            <p>Fundación de Santo Domingo, la primera ciudad europea en América, con su impresionante zona colonial.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-warning text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-flag-fill" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">1844</h5>
+                                    <small class="text-muted">Independencia</small>
+                                </div>
+                            </div>
+                            <p>Juan Pablo Duarte y los trinitarios logran la independencia de Haití, fundando la República Dominicana.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-info text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-globe" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">1990s</h5>
+                                    <small class="text-muted">Boom Turístico</small>
+                                </div>
+                            </div>
+                            <p>Desarrollo del turismo masivo, especialmente en Punta Cana, convirtiendo al país en destino caribeño líder.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content glass-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                    <i class="bi bi-award-fill" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">2025</h5>
+                                    <small class="text-muted">Presente</small>
+                                </div>
+                            </div>
+                            <p>Hoy, República Dominicana es reconocida mundialmente por sus playas, cultura, historia y hospitalidad única.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <button class="btn btn-innovative" onclick="tourismInnovations.earnBadge('planner')">
+                        Explorar Más Historia
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="py-5" id="interactive-map">
+            <div class="container">
+                <h2 class="section-title">Mapa Interactivo de RD</h2>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="glass-card p-4">
+                            <div class="position-relative">
+                                <!-- Simplified Interactive Map -->
+                                <svg viewBox="0 0 400 300" class="w-100" style="max-height: 400px;">
+                                    <!-- Dominican Republic outline -->
+                                    <path d="M50 150 L100 130 L180 140 L250 135 L320 145 L350 160 L340 180 L300 190 L200 185 L120 175 L60 165 Z" 
+                                          fill="rgba(0,123,255,0.3)" 
+                                          stroke="var(--primary-color)" 
+                                          stroke-width="2"
+                                          class="country-outline"/>
+                                    
+                                    <!-- Interactive Points -->
+                                    <circle cx="100" cy="150" r="8" fill="#dc3545" class="map-point" data-city="Santo Domingo">
+                                        <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="280" cy="140" r="8" fill="#28a745" class="map-point" data-city="Punta Cana">
+                                        <animate attributeName="r" values="8;12;8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="200" cy="130" r="8" fill="#ffc107" class="map-point" data-city="Samaná">
+                                        <animate attributeName="r" values="8;12;8" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                    </circle>
+                                    
+                                    <!-- Labels -->
+                                    <text x="100" y="170" text-anchor="middle" class="map-label" fill="var(--text-color)">Santo Domingo</text>
+                                    <text x="280" y="160" text-anchor="middle" class="map-label" fill="var(--text-color)">Punta Cana</text>
+                                    <text x="200" y="150" text-anchor="middle" class="map-label" fill="var(--text-color)">Samaná</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="glass-card p-4">
+                            <h5><i class="bi bi-geo-alt-fill text-primary me-2"></i>Destinos Destacados</h5>
+                            <div id="map-info">
+                                <p>Haz clic en los puntos del mapa para explorar cada destino</p>
+                            </div>
+                            
+                            <!-- Quick Stats -->
+                            <div class="mt-4">
+                                <h6>Datos Rápidos</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-map text-primary me-2"></i>48,671 km² de superficie</li>
+                                    <li><i class="bi bi-water text-info me-2"></i>1,288 km de costa</li>
+                                    <li><i class="bi bi-sun text-warning me-2"></i>27°C temperatura promedio</li>
+                                    <li><i class="bi bi-people text-success me-2"></i>10.8 millones de habitantes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -433,5 +753,148 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/innovative-features.js"></script>
+    
+    <!-- Interactive Map Functionality -->
+    <script>
+    // Interactive Map Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mapPoints = document.querySelectorAll('.map-point');
+        const mapInfo = document.getElementById('map-info');
+        
+        const cityInfo = {
+            'Santo Domingo': {
+                title: 'Santo Domingo - Capital Histórica',
+                description: 'La primera ciudad de América con más de 500 años de historia.',
+                attractions: ['Zona Colonial', 'Alcázar de Colón', 'Catedral Primada'],
+                temperature: '28°C',
+                activities: 'Turismo Cultural, Vida Nocturna, Gastronomía'
+            },
+            'Punta Cana': {
+                title: 'Punta Cana - Paraíso Playero',
+                description: 'Destino turístico #1 del Caribe con playas espectaculares.',
+                attractions: ['Playa Bávaro', 'Hoyo Azul', 'Isla Saona'],
+                temperature: '30°C',
+                activities: 'Deportes Acuáticos, Golf, Resorts de Lujo'
+            },
+            'Samaná': {
+                title: 'Samaná - Naturaleza Virgen',
+                description: 'Península famosa por ballenas jorobadas y cascadas.',
+                attractions: ['Salto El Limón', 'Cayo Levantado', 'Playa Las Terrenas'],
+                temperature: '26°C',
+                activities: 'Avistamiento de Ballenas, Ecoturismo, Senderismo'
+            }
+        };
+        
+        mapPoints.forEach(point => {
+            point.addEventListener('click', function() {
+                const city = this.getAttribute('data-city');
+                const info = cityInfo[city];
+                
+                mapInfo.innerHTML = `
+                    <div class="city-info">
+                        <h6 class="text-primary">${info.title}</h6>
+                        <p class="small">${info.description}</p>
+                        <div class="mb-2">
+                            <strong>Temperatura:</strong> ${info.temperature}
+                        </div>
+                        <div class="mb-2">
+                            <strong>Actividades:</strong> ${info.activities}
+                        </div>
+                        <div class="mb-2">
+                            <strong>Atracciones:</strong>
+                            <ul class="small mb-0">
+                                ${info.attractions.map(attr => `<li>${attr}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                
+                // Highlight selected point
+                mapPoints.forEach(p => p.style.opacity = '0.5');
+                this.style.opacity = '1';
+                
+                // Earn badge for exploring map
+                if (window.tourismInnovations) {
+                    window.tourismInnovations.earnBadge('explorer');
+                }
+            });
+            
+            point.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.5)';
+                this.style.cursor = 'pointer';
+            });
+            
+            point.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    });
+    </script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+    // Register service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('SW registered: ', registration);
+                    
+                    // Show install prompt
+                    let deferredPrompt;
+                    window.addEventListener('beforeinstallprompt', (e) => {
+                        e.preventDefault();
+                        deferredPrompt = e;
+                        
+                        // Show custom install button
+                        showInstallPrompt();
+                    });
+                    
+                    function showInstallPrompt() {
+                        const installBanner = document.createElement('div');
+                        installBanner.className = 'alert alert-info position-fixed';
+                        installBanner.style.cssText = `
+                            top: 80px;
+                            right: 20px;
+                            z-index: 9999;
+                            max-width: 300px;
+                        `;
+                        installBanner.innerHTML = `
+                            <h6><i class="bi bi-download me-2"></i>Instalar App</h6>
+                            <p class="small mb-2">Instala Explora RD para acceso rápido y función offline</p>
+                            <button class="btn btn-primary btn-sm me-2" id="install-app">Instalar</button>
+                            <button class="btn btn-secondary btn-sm" onclick="this.parentElement.remove()">Más tarde</button>
+                        `;
+                        
+                        document.body.appendChild(installBanner);
+                        
+                        document.getElementById('install-app').addEventListener('click', () => {
+                            if (deferredPrompt) {
+                                deferredPrompt.prompt();
+                                deferredPrompt.userChoice.then((choiceResult) => {
+                                    if (choiceResult.outcome === 'accepted') {
+                                        console.log('User accepted the install prompt');
+                                    }
+                                    deferredPrompt = null;
+                                    installBanner.remove();
+                                });
+                            }
+                        });
+                        
+                        // Auto-hide after 10 seconds
+                        setTimeout(() => {
+                            if (document.body.contains(installBanner)) {
+                                installBanner.remove();
+                            }
+                        }, 10000);
+                    }
+                })
+                .catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+        });
+    }
+    </script>
 </body>
 </html>

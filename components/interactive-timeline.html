@@ -1,0 +1,149 @@
+<!-- Interactive Dominican Republic Timeline -->
+<section class="py-5 bg-light" id="rd-timeline">
+    <div class="container">
+        <h2 class="section-title gradient-text">Historia Interactiva de República Dominicana</h2>
+        <p class="text-center mb-5">Descubre los momentos más importantes de nuestra rica historia</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content glass-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-ship" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">1492</h5>
+                            <small class="text-muted">Descubrimiento</small>
+                        </div>
+                    </div>
+                    <p>Cristóbal Colón llega a la isla La Española, convirtiéndose en el primer territorio americano visitado por los europeos.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content glass-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-success text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-building-fill" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">1496</h5>
+                            <small class="text-muted">Primera Ciudad</small>
+                        </div>
+                    </div>
+                    <p>Fundación de Santo Domingo, la primera ciudad europea en América, con su impresionante zona colonial.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content glass-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-flag-fill" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">1844</h5>
+                            <small class="text-muted">Independencia</small>
+                        </div>
+                    </div>
+                    <p>Juan Pablo Duarte y los trinitarios logran la independencia de Haití, fundando la República Dominicana.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content glass-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-info text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-globe" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">1990s</h5>
+                            <small class="text-muted">Boom Turístico</small>
+                        </div>
+                    </div>
+                    <p>Desarrollo del turismo masivo, especialmente en Punta Cana, convirtiendo al país en destino caribeño líder.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content glass-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-award-fill" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">2025</h5>
+                            <small class="text-muted">Presente</small>
+                        </div>
+                    </div>
+                    <p>Hoy, República Dominicana es reconocida mundialmente por sus playas, cultura, historia y hospitalidad única.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <button class="btn btn-innovative" onclick="tourismInnovations.earnBadge('planner')">
+                Explorar Más Historia
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Map Section -->
+<section class="py-5" id="interactive-map">
+    <div class="container">
+        <h2 class="section-title">Mapa Interactivo de RD</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="glass-card p-4">
+                    <div class="position-relative">
+                        <!-- Simplified Interactive Map -->
+                        <svg viewBox="0 0 400 300" class="w-100" style="max-height: 400px;">
+                            <!-- Dominican Republic outline -->
+                            <path d="M50 150 L100 130 L180 140 L250 135 L320 145 L350 160 L340 180 L300 190 L200 185 L120 175 L60 165 Z" 
+                                  fill="rgba(0,123,255,0.3)" 
+                                  stroke="var(--primary-color)" 
+                                  stroke-width="2"
+                                  class="country-outline"/>
+                            
+                            <!-- Interactive Points -->
+                            <circle cx="100" cy="150" r="8" fill="#dc3545" class="map-point" data-city="Santo Domingo">
+                                <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="280" cy="140" r="8" fill="#28a745" class="map-point" data-city="Punta Cana">
+                                <animate attributeName="r" values="8;12;8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="200" cy="130" r="8" fill="#ffc107" class="map-point" data-city="Samaná">
+                                <animate attributeName="r" values="8;12;8" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Labels -->
+                            <text x="100" y="170" text-anchor="middle" class="map-label" fill="var(--text-color)">Santo Domingo</text>
+                            <text x="280" y="160" text-anchor="middle" class="map-label" fill="var(--text-color)">Punta Cana</text>
+                            <text x="200" y="150" text-anchor="middle" class="map-label" fill="var(--text-color)">Samaná</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="glass-card p-4">
+                    <h5><i class="bi bi-geo-alt-fill text-primary me-2"></i>Destinos Destacados</h5>
+                    <div id="map-info">
+                        <p>Haz clic en los puntos del mapa para explorar cada destino</p>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="mt-4">
+                        <h6>Datos Rápidos</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-map text-primary me-2"></i>48,671 km² de superficie</li>
+                            <li><i class="bi bi-water text-info me-2"></i>1,288 km de costa</li>
+                            <li><i class="bi bi-sun text-warning me-2"></i>27°C temperatura promedio</li>
+                            <li><i class="bi bi-people text-success me-2"></i>10.8 millones de habitantes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
